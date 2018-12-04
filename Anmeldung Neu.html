@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+	<p></p>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script language="javascript">
+			function checkLogin(form) {
+				var userId = document.forms["login"]["userId"].value;
+				var pw = document.forms["login"]["pass"].value;
+				if (userId=="User") { 
+					if (pw=="pw") {              
+						location="http://localhost:3000/" 
+					} else {
+					alert("Invalid Password")
+					}
+				} else {  alert("Invalid UserID")
+				}
+			}
+	</script>
+	<title>Login</title>
+			<link rel="Stylesheet" type="text/css" href="/Users/Florian/Desktop/Kapa/bootstrap.css">
+  	</head>
+  <body>
+	  	<section id="login">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-6">
+			<h2>Anmeldung</h2>
+			<p>Um sich einzuloggen geben Sie den Bnutzernamen und Passwort ein.</p>
+		</div>
+		<div class="col-md-6">
+		<form>
+		<fieldset>
+		<legend>Login</legend>
+			<label>Name :</label>
+			<div class="row">
+			<div class="col-md-7">
+			<input type="text" class="form-control" required>
+		</div>
+		</div>
+			<label>Passwort :</label>
+			<div class="row">
+			<div class="col-md-7">
+			<input name="pass" type="password" class="form-control" required>
+		</div>
+		</div>
+		<p></p>
+			<input type="button" value="Login" onClick="checkLogin(this.form)">
+			<input type="button" value="Registrierung" onClick="window.location.href=' '">
+		</fieldset>
+		</form>
+	</div>
+	</section>
+  </body>
+</html>
