@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "node"
+install: npm install
+notifications:
+  email:
+    recipients:
+      - stob@hs-furtwangen.de
+    on_success: never
+    on_failure: always
