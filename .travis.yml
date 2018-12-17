@@ -5,6 +5,6 @@ install: npm install
 notifications:
   email:
     recipients:
-      - stob@hs-furtwangen.de
+      - nadine.jakob@hs.furtwangen.de
     on_success: never
     on_failure: always
