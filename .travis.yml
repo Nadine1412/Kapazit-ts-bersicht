@@ -6,5 +6,6 @@ notifications:
   email:
     recipients:
       - nadine.jakob@hs.furtwangen.de
+      - florian.moehrle@hs-furtwangen.de
     on_success: never
     on_failure: always
