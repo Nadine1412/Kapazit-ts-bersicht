@@ -1,13 +1,23 @@
-language: node_js
-node_js:
-  - node
-install: npm install
-script: npm test
+#language: node_js
+#node_js:
+ # - node
+#install: npm install
+#script: npm test
+#notifications:
+ # email:
+  #  recipients:
+   #   - nadine.jakob@hs-furtwangen.de
+    #  - florian.moehrle@hs-furtwangen.de
+    #on_success: always
+    #on_failure: always
+
+language: php
+php:
+- 7.1.9
 notifications:
-  email:
-    recipients:
-      - nadine.jakob@hs-furtwangen.de
-      - florian.moehrle@hs-furtwangen.de
+ email:
+   recipients:
+    - nadine.jakob@hs-furtwangen.de
+    - florian.moehrle@hs-furtwangen.de
     on_success: always
     on_failure: always
-
