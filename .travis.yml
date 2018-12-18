@@ -13,7 +13,7 @@
 
 language: php
 php:
-- 7.1.9
+- '7'
 notifications:
  email:
    recipients:
