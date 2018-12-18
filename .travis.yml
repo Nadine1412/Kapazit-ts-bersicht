@@ -1,7 +1,4 @@
 language: php
-php:
- - hhvm
- 
 notifications:
  email:
    recipients:
