@@ -9,3 +9,4 @@ notifications:
       - florian.moehrle@hs-furtwangen.de
     on_success: always
     on_failure: always
+
