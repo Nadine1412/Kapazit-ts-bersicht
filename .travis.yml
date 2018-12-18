@@ -1,8 +1,18 @@
 language: php
+ 
+php:
+     - 5.4
+     - 5.5
+ 
+install:
+   - composer self-update
+   - composer install
+script:
+     - phpunit --coverage-clover build/logs/clover.xml -c tests/phpunit.xml
+ 
+after_script:
+     - php vendor/bin/coveralls
+ 
 notifications:
- email:
-   recipients:
-    - nadine.jakob@hs-furtwangen.de
-    - florian.moehrle@hs-furtwangen.de
-    on_success: always
-    on_failure: always
+     email: false
+
