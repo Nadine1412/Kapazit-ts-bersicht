@@ -5,9 +5,9 @@ php:
      - 7.3.0
    #  - hhvm
  
-before_script:
-     - composer self-update
-     - composer install --prefer-soucre --no-interaction --dev
+#before_script:
+ #    - composer self-update
+  #   - composer install --prefer-soucre --no-interaction --dev
 
 # Commands you want to run that will verify your build.
 #script: phpunit
