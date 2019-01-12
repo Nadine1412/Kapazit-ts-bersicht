@@ -151,13 +151,13 @@ ul ul ul{
         <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
     </div>
     <section id="charts" class="charts">
-        <br><br><br><br><br><br>
+        <br><br><br><br>
         <center>
-            <h1>Bedarfs- und Kapazitätsabgleich Ungarn</h1>
+            <h1>Bedarfs- und Kapazitätsabgleich Deutschland</h1>
         </center>
         <p></p>
         <center>
-            <input type="button" value="Zurück" onClick="window.location.href='pie.html'">
+            <input type="button" value="Zurück" onClick="window.location.href='bar.html'">
         </center>
         <p></p>
 
@@ -166,9 +166,9 @@ ul ul ul{
             <script>
                 var ctx = document.getElementById("myChart");
                 var myChart = new Chart(ctx, {
-                    type: 'pie',
+                    type: 'bar',
                     data: {
-                        labels: ["Ungarn","Produkt 1","Produkt 3"],
+                        labels: ["Deutschland","Produkt 2","Produkt 3"],
                         datasets: [{
                             label: "Kapazität",
                             data: [100],
@@ -190,7 +190,7 @@ ul ul ul{
                             ]
                         },{
                             label: "Bedarf",
-                            data: [0,50,60],
+                            data: [0,33,23],
                             backgroundColor: [
                                 'rgba(15, 11, 235, 0.6)',
                                 'rgba(15, 11, 235, 0.6)',
@@ -224,6 +224,7 @@ ul ul ul{
                     }
                 });
                 </script>
+            Delta in Höhe von : <textarea></textarea> für Produkt <textarea></textarea>
         </div>
         <br><br>
         <input type="button" value="Logout" onClick="window.location.href='index.html'">

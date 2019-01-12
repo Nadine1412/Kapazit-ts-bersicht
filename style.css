@@ -1,60 +1,40 @@
 
 
+
 .contact{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.16);
     position: relative;
     background: url("landscape-615429_1920.jpg") ;
+  
     background-size:cover;
 }
 .login{
     color: rgb(255, 255, 255);
     position: relative;
     background: url("landscape-615429_1920.jpg") ;
+  
     background-size:cover;
 }
 .charts{
     color: rgb(255, 255, 255);
-    position: right;
+    position: relative;
     background: url("landscape-615429_1920.jpg") ;
     background-size:cover;
-}
 
+}
 .container{
     color: rgb(255, 255, 255);
-    background: rgba(0, 0, 0, 0.7);
 }
-h1 {
-	text-align: center;
-	-webkit-animation: textwelle 2s;
-	animation: textwelle 2s;
-	font-size: 200%;
-}
-
-@keyframes textwelle {
-	0% {
-		font-size: 0%;
-		opacity: 0;
-	}
-	90% {
-		font-size: 220%;
-		opacity: 1;
-	}
-	100% {
-		font-size: 200%;
-		opacity: 1;
-	}
+.button{
+  background-color:orangered;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-@-webkit-keyframes textwelle {
-	0% {
-		font-size: 0%;
-		opacity: 0;
-	}
-	90% {
-		font-size: 120%;
-		opacity: 1;
-	}
-	100% {
-		font-size: 100%;
-    }
-}
