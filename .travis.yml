@@ -1,5 +1,6 @@
 language: php
- 
+
+# php versions
 php:
      - 7.3.0
    #  - hhvm
@@ -9,15 +10,15 @@ before_script:
      - composer install --prefer-soucre --no-interaction --dev
 
 # Commands you want to run that will verify your build.
-script: phpunit
+#script: phpunit
 
 # allow_failures: Allow this build to fail under the specified environments.
 # fast_finish: If your build fails do not continue trying to build, just stop.
-matrix:
-  allow_failures:
-    - php: 5.6
-    - php: hhvm
-  fast_finish: true
+#matrix:
+ # allow_failures:
+  #  - php: 5.6
+   # - php: hhvm
+ # fast_finish: true
 
 # Customize when the notification emails are sent.
 notifications:
