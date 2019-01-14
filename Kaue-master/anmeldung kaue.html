@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="Stylesheet" type="text/css" href="bootstrap.css">
+	<link rel="Stylesheet" type="text/css" href="style.css">
+	<title>Login</title>
+	  </head>
+	  <body>
+	  	<section id="login" class="login">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-6">
+				<br><br><br><br><br><br>
+			<h2>Anmeldung zur Kapazitätsübersicht</h2>
+			<p>Um sich einzuloggen geben Sie ihre EMail-Adresse und das Passwort ein.</p>
+		</div>
+		<div class="col-md-6">
+				<br><br><br><br><br><br>
+		<form name="login" method ="POST" action="anmeldungVerarbeiten.php">
+		<legend>Login</legend>
+			<label>Email :</label>
+			<div class="row">
+			<div class="col-md-7">
+			<input name="e_mail" type="email" class="form-control" required>
+		</div>
+		</div>
+			<label>Passwort :</label>
+			<div class="row">
+			<div class="col-md-7">
+			<input name="pass" type="password" class="form-control" required>
+		</div>
+		</div>
+		<p></p>
+			<button type="submit">Login</button>
+			<input type="button" value="Registrierung" onClick="window.location.href='Registrierung Kaue.php'">
+		</form>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
+		</section>
+
+  </body>
+</html>
