@@ -1,5 +1,5 @@
 <?php
-require 'C:\Users\Nadine\Documents\HS Furtwangen\Vorlesung\BAM\BAM2\Software Projektmanagement\Kaue-Repo\Kapazit-ts-bersicht\Kaue-master\EmailValidator.php';
+require 'Kapazit-ts-bersicht\EmailValidator.php';
 use PHPUnit\Framework\TestCase;
 class EmailValidatorTest extends TestCase
 {

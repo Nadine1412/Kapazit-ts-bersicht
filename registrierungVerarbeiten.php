@@ -23,49 +23,59 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
                 //    OR mid LIKE '$maid' AND vorname LIKE '$vorname' AND name LIKE '$nachname'"; 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
  $result = mysqli_num_rows($check); //Prüfen ob Eintrag bereits vorhanden
- 
- if ($result) {
-     # Mitglied bereits vorhanden
-   // @ToDo Ausgabe, dass Mitglied bereits vorhanden ist.
-    echo "Email bereits vorhanden";
-    exit();
-    } else {
-    // Aus der Datenbank wird zur zugehörigen Rolle die passende Rollen ID herausgesucht, um es später dem Mitarbeiter zuweisen zu können
-    $query2 = "SELECT R_ID FROM rolle_tbl
-    WHERE Rolle LIKE '$selectedRole'";
 
-    $r_id_result = mysqli_query($db, $query2);
+ // EmailValidator
+$emailValidate = new EmailValidator();
+$checkEmail = $emailValidate->is_validate($email);
+if($checkEmail){
+    
+    if ($result) {
+        # Mitglied bereits vorhanden
+      // @ToDo Ausgabe, dass Mitglied bereits vorhanden ist.
+       echo "Email bereits vorhanden";
+       exit();
+       } else {
+       // Aus der Datenbank wird zur zugehörigen Rolle die passende Rollen ID herausgesucht, um es später dem Mitarbeiter zuweisen zu können
+       $query2 = "SELECT R_ID FROM rolle_tbl
+       WHERE Rolle LIKE '$selectedRole'";
+   
+       $r_id_result = mysqli_query($db, $query2);
+   
+       while($r_id_db = $r_id_result->fetch_assoc())
+       {
+       $selectedRoleID = $r_id_db["R_ID"];
+       }
+   
+        # Mitglied hinzufügen
+       $query3="INSERT INTO mitarbeiter_tbl
+                SET 
+                Name='$nachname',
+                Vorname='$vorname',
+                GebDatum='$birthday',
+                EMail= '$email',
+                Rolle='$selectedRoleID',
+                Status= '$state',
+                Passwort='$password_encrypt';";
+       $eintragen = mysqli_query($db, $query3);
+   
+       if($eintragen)
+       {
+   
+            # weiterleitung auf die seite nach erfolgreichem login
+           #header('location: Anmeldung Bergwacht.html');
+           header('location: Anmeldung kaue.html');
+           exit(1);
+       }
+       else
+       {
+            # weiterleitung auf die Registrierungsseite ...
+          header('location: Registrierung kaue.php');
+           exit();
+       }
+    } 
 
-    while($r_id_db = $r_id_result->fetch_assoc())
-    {
-    $selectedRoleID = $r_id_db["R_ID"];
-    }
+} else{
+    echo "E-Mail nicht gültig!";
+}
 
-     # Mitglied hinzufügen
-    $query3="INSERT INTO mitarbeiter_tbl
-             SET 
-             Name='$nachname',
-             Vorname='$vorname',
-             GebDatum='$birthday',
-             EMail= '$email',
-             Rolle='$selectedRoleID',
-             Status= '$state',
-             Passwort='$password_encrypt';";
-    $eintragen = mysqli_query($db, $query3);
-
-    if($eintragen)
-    {
-
-         # weiterleitung auf die seite nach erfolgreichem login
-        #header('location: Anmeldung Bergwacht.html');
-        header('location: Anmeldung kaue.html');
-        exit(1);
-    }
-    else
-    {
-         # weiterleitung auf die Registrierungsseite ...
-       header('location: Registrierung kaue.php');
-        exit();
-    }
- } 
 ?>
