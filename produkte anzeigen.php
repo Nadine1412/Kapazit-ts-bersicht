@@ -177,9 +177,9 @@
                                     while($user_db = $result->fetch_assoc())
                                     {
                                         // Laden der Ausbildungsdaten aus der Datenbank
-                                        $p_id =  $user_db["A_ID"];
-                                        $produktbezeichnung =  $user_db["produktbezeichnung"];
-                                        $anzahl =  $user_db["anzahl"];
+                                        $p_id =  $user_db["P_ID"];
+                                        $produktbezeichnung =  $user_db["Produktbez"];
+                                        $anzahl =  $user_db["Anzahl"];
                                         echo("
                                         <tr>
                                             <td>$p_id </td>

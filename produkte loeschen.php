@@ -157,7 +157,7 @@
 
                  <table>
                               <tr>
-                                <th>Ausbildungs-ID:</th>
+                                <th>Produkt-ID:</th>
                                 <th>Bezeichnung:</th>
                                 <th>Löschen:</th>
                               </tr>
@@ -170,7 +170,7 @@
 
                                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                    $query1 = "SELECT * FROM produkte_tbl";
+                                    $query1 = "SELECT * FROM produkt_tbl";
 
                                     $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
@@ -178,7 +178,7 @@
                                     {
                                         // Laden der Ausbildungsdaten aus der Datenbank
                                         $p_id =  $user_db["P_ID"];
-                                        $produktbezeichnung =  $user_db["Produktbezeichnung"];
+                                        $produktbezeichnung =  $user_db["Produktbez"];
                                         echo("
                                         <tr>
                                             <td>$p_id </td>

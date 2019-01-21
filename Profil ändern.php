@@ -185,74 +185,24 @@ session_start();
                         <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control">
                     </div>
                 </div>
-                <label>Geburtsdatum :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="date" name = "birthday" value="<?php echo($_SESSION["userBirthday"]) ?>" class="form-control">
-                    </div>
-                </div>
                 <label>E-Mail :*</label>
                 <div class="row">
                     <div class="col-md-7">
                         <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control">
                     </div>
                 </div>
-                <label>Rolle :*</label>
+                <label>Position:</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <select name="roles" class="form-control">
-                            <?php
-                              
-                                // Auslesen aller vorhandenen Rollen aus der Datenbank
-                                $query1 = "SELECT Rolle FROM tbl_rolle"; 
-
-                                $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-                                while($role_db = $result->fetch_assoc())
-                                {
-                                    $role =  $role_db["Rolle"];
-                                    // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
-                                    if($role == $_SESSION["userRoleString"])
-                                    {
-                                        echo "<option value=$role selected> $role </option>";
-                                    }
-                                    else
-                                    {
-                                        echo "<option value=$role> $role </option>";
-                                    }
-                                    
-                                }
-                            ?>
-                        </select>
+                    <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" >
                     </div>
                 </div>
-                <label>Status :*</label>
+                <label>Fachbereich:</label>
                 <div class="row">
                     <div class="col-md-7">
-                        <?php 
-                            if($_SESSION["userState"] == "aktiv")
-                            {
-                                echo "<select name='state' class='form-control'>
-                                <option value='aktiv' selected>aktiv</option>
-                                <option value='passiv'>passiv</option>
-                                </select>";
-                            }
-                            else
-                            {
-                                echo "<select name='state' class='form-control'>
-                                <option value='aktiv' >aktiv</option>
-                                <option value='passiv' selected>passiv</option>
-                                </select>";
-                            }
-                        ?>
+                    <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" >
                     </div>
                 </div>
-                <!-- <label> Altes Passwort :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="password" name="oldpassword" class="form-control"> 
-                    </div>
-                </div> -->
                 <label>Neues Passwort :*</label>
                 <div class="row">
                     <div class="col-md-7">

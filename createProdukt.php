@@ -13,8 +13,9 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
 // Ausbildung hinzufügen
  $query1 = "INSERT INTO produkt_tbl
-            SET Produktbezeichnung = '$bezeichnung'
-            SET Anzahl = '$anzahl';";
+            SET 
+            Produktbez = '$bezeichnung',
+            Anzahl = '$anzahl';";
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 

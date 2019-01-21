@@ -49,24 +49,14 @@ if ($result->num_rows != 0)
         while($user_db = $result2->fetch_assoc())
         {
             // Laden der Userdaten aus der Datenbank
-            $_SESSION["userName"] =  $user_db["Name"];
+            $_SESSION["userName"] =  $user_db["Nachname"];
             $_SESSION["userForename"] =  $user_db["Vorname"];
             $_SESSION["userMID"] =  $user_db["M_ID"];
-            $_SESSION["userBirthday"] =  $user_db["GebDatum"];
-            $_SESSION["userState"] =  $user_db["Status"];
+            $_SESSION["userPosition"] =  $user_db["Position"];
+            $_SESSION["userFachbereich"] =  $user_db["Fachbereich"];
             $_SESSION["userEMail"] =  $user_db["EMail"];
-            $_SESSION["userRole"] = $user_db["Rolle"];
             $_SESSION["userPasswordEnc"] = $user_db["Passwort"];        
-    
-            // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
-            $query3 = "SELECT Rolle FROM rolle_tbl WHERE R_ID LIKE '" . $_SESSION["userRole"] . "' ";
-            
-            $resultRoleString = mysqli_query($db, $query3);
-    
-            while($role_db = $resultRoleString->fetch_assoc())
-            {
-                $_SESSION["userRoleString"] = $role_db["Rolle"];
-            }
+
                
         }
 

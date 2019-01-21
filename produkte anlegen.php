@@ -163,7 +163,9 @@
                 <label>Produktbezeichnung:</label>
                 <div class="row">
                     <div class="col-md-7">
+                         Bezeichnung
                         <input type="text" name = "bezeichnung" class="form-control" required>
+                        Anzahl
                         <input type="text" name = "anzahl" class="form-control" required>
                     </div>
                 </div>

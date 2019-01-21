@@ -158,10 +158,9 @@
                                 <th>M_ID</th>
                                 <th>Name</th>
                                 <th>Vorname</th>
-                                <th>GebDatum</th>
                                 <th>EMail</th>
-                                <th>Rolle</th>
-                                <th>Status</th>
+                                <th>Position</th>
+                                <th>Fachbereich</th>
                               </tr>
                                      <?php
                                         /* DB Verbindung herstellen */
@@ -180,32 +179,21 @@
                                         {
                                             // Laden der Mitarbeiter Daten aus der Datenbank
                                             $mID =  $user_db["M_ID"];
-                                            $name =  $user_db["Name"];
+                                            $name =  $user_db["Nachname"];
                                             $forename =  $user_db["Vorname"];
-                                            $birthday =  $user_db["GebDatum"];
-                                            $state =  $user_db["Status"];
+                                            $position =  $user_db["Position"];
                                             $eMail =  $user_db["EMail"];
-                                            $role = $user_db["Rolle"];
+                                            $fachbereich = $user_db["Fachbereich"];
 
-                                            // Abfrage der UserRole um die RollenID in die Bezeichnung umzuwandeln
-                                            $query2 = "SELECT Rolle FROM tbl_rolle WHERE R_ID LIKE '$role' ";
-                                            
-                                            $resultRoleString = mysqli_query($db, $query2);
-
-                                            while($role_db = $resultRoleString->fetch_assoc())
-                                            {
-                                                $roleString = $role_db["Rolle"];
-                                            }   
                                             echo( 
                                             "
                                             <tr> 
                                                 <td>$mID</td>
                                                 <td>$name</td>
                                                 <td>$forename</td>
-                                                <td>$birthday</td>
                                                 <td>$eMail</td>
-                                                <td>$roleString</td>
-                                                <td>$state</td>
+                                                <td>$position</td>
+                                                <td>$fachbereich</td>
                                             </tr>");
                                         }
                                     ?>

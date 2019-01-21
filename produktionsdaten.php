@@ -170,25 +170,26 @@
 
                                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                    $query1 = "SELECT * FROM produktionsdaten_tbl";
+                                    $query1 = "SELECT * FROM produkt_tbl";
 
                                     $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
                                     while($user_db = $result->fetch_assoc())
                                     {
                                         // Laden der Userdaten aus der Datenbank
-                                        $userPDID =  $user_db["PD_ID"];
-                                        $userProdukt =  $user_db["Produkt"];
+                                        $userPDID =  $user_db["P_ID"];
+                                        $userProdukt =  $user_db["Produktbez"];
                                         $userAnzahl =  $user_db["Anzahl"];
-                                        $userWerk =  $user_db["Werk"]; 
+                                        // $userWerk =  $user_db["Werk"]; 
                                         echo("
                                         <tr>
                                             <td>$userPDID</td>
                                             <td>$userProdukt</td>
                                             <td>$userAnzahl </td>
-                                            <td>$userWerk</td>
+                                            
                                             </tr>
-                                        ");       
+                                        ");   
+                                        // <td>$userWerk</td>    
                                     }
                                 ?>  
                          </table>
