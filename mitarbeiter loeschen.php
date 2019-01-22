@@ -219,11 +219,11 @@
                 Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
             </div>
         <script type="text/javascript">
-           var rolle = "<?php echo($_SESSION['userRoleString']);?>";
+           var position = "<?php echo($_SESSION['userPosition']);?>";
            var table = document.getElementById("Mitarbeiterloeschentbl");
            var unauthorised = document.getElementById("KeinAdmin");
 
-           if(rolle == "Anwaerter" || rolle == "Ausbilder") //Abteilungsleiter //Sachbearbeiter
+           if(position == "Fachbereichsleiter" || position == "Sachbearbeiter") //Abteilungsleiter //Sachbearbeiter
            {
                 table.hidden=false;
                 unauthorised.hidden=true;

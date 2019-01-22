@@ -159,7 +159,6 @@
                                 <th>PD_ID:</th>
                                 <th>Produkt:</th>
                                 <th>Anzahl:</th>
-                                <th>Werk:</th>
                               </tr>
                               <?php
                                     /* DB Verbindung herstellen */
@@ -186,7 +185,6 @@
                                             <td>$userPDID</td>
                                             <td>$userProdukt</td>
                                             <td>$userAnzahl </td>
-                                            
                                             </tr>
                                         ");   
                                         // <td>$userWerk</td>    

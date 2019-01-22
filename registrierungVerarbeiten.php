@@ -1,4 +1,7 @@
 <?php
+require 'C:\xampp\htdocs\Kapazit-ts-bersicht\EmailValidator.php';
+
+
 $vorname = $_POST['vorname'];
 $nachname = $_POST['name'];
 $fachbereich = $_POST['fachbereich'];
@@ -22,10 +25,10 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
  $result = mysqli_num_rows($check); //Prüfen ob Eintrag bereits vorhanden
 
- // EmailValidator
-$emailValidate = new EmailValidator();
-$checkEmail = $emailValidate->is_validate($email);
-if($checkEmail){
+//  // EmailValidator
+// $emailValidate = new EmailValidator();
+// $checkEmail = $emailValidate->is_validate($email);
+// if($checkEmail){
 
  if ($result) {
      # Mitglied bereits vorhanden
@@ -60,7 +63,7 @@ if($checkEmail){
         exit();
     }
  } 
-} else{
-    echo "E-Mail nicht gültig!";
-}
+// } else{
+//     echo "E-Mail nicht gültig!";
+// }
 ?>
