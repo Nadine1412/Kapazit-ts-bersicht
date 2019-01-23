@@ -130,7 +130,7 @@
                     <li><a href="Produktionsdaten.php">Produktionsdaten</a>
                         <ul>
                             <li><a href="entscheidung1.html">Produktionsübersicht</a></li>
-                            <li><a href="entscheidung2.html">Produktionsverwaltung</a></li>
+                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
                         </ul>
                     </li>
                     <li><a href="Produkte anzeigen.php">Produkte</a>
@@ -184,7 +184,7 @@
                                     {
                                         // Laden der Werk aus der Datenbank
                                         $w_id =  $user_db["W_ID"];
-                                        $kapazität =  $user_db["Kapazität"];
+                                        $kapazität =  $user_db["Kapazitaet"];
                                         echo("
                                         <tr>
                                             <td>$w_id </td>

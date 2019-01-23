@@ -1,3 +1,5 @@
+<!-- Ist die Produktionsverwaltung! -->
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -133,7 +135,7 @@
             <li><a href="Produktionsdaten.php">Produktionsdaten</a>
                 <ul>
                     <li><a href="entscheidung1.html">Produktionsübersicht</a></li>
-                    <li><a href="entscheidung2.html">Produktionsverwaltung</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
                 </ul>
             </li>
             <li><a href="Produkte anzeigen.php">Produkte</a>
@@ -158,22 +160,34 @@
     </div> 
 
     <section id="charts" class="charts">
-        <br><br>
-        <center>
-            <h1>Wählen Sie den gewünschten Diagrammtyp:</h1>
-        </center>
-        <p></p>
-        <p></p>
-
-        <div style="width:30%;" class="container">
-            <br>
-            <center><input type="button" value="Kuchendiagramm" onClick="window.location.href='Pie.html'"></center>
-            <center><img src="Pie.png" alt="Selfhtml" width="200px"></center>
-            <br>
-            <center><input type="button" value="Säulendiagramm" onClick="window.location.href='Bar.html'"></center>
-            <center><img src="Bar.png" alt="Selfhtml" width="300px"></center>
-            <br><br><br><br>
+        
+        <br><br><br><br><br><br>
+        <div class="container">
+         <div class="row">
+         <div class="col-md-6">
+      
+          <h2>Produktionsverwaltung</h2>
+            
+            <p>Hier können Sie ein Produkt einem Werk zuweisen.</p>
         </div>
+        <div class="col-md-6">
+         
+         <form name="Produktionszuweisung" method="post" action="createWerk.php">
+             <label>Werkbezeichnung:</label>
+             <div class="row">
+                 <div class="col-md-7">
+                      Bezeichnung:
+                     <input type="text" name = "bezeichnung" class="form-control" required>
+                     Kapazität:
+                     <input type="text" name = "kapazität" class="form-control" required>
+                 </div>
+             </div>
+             
+                 <p></p>
+             <button type="submit">Daten speichern</button>
+             </form>
+         </div>
+     </div>
         <br><br>
     </section>
 

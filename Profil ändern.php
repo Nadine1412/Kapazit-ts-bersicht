@@ -146,7 +146,7 @@ session_start();
                     <li><a href="Produktionsdaten.php">Produktionsdaten</a>
                         <ul>
                             <li><a href="entscheidung1.html">Produktionsübersicht</a></li>
-                            <li><a href="entscheidung2.html">Produktionsverwaltung</a></li>
+                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
                         </ul>
                     </li>
                     <li><a href="Produkte anzeigen.php">Produkte</a>
