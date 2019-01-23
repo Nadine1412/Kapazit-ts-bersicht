@@ -1,6 +1,6 @@
 <?php
 $bezeichnung = $_POST['bezeichnung'];
-$kapazität = $_POST['kapazität'];
+$kapazität = $_POST['kapazitaetfix'];
 
 
 /* DB Verbindung herstellen */
@@ -14,8 +14,8 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 // Werk hinzufügen
  $query1 = "INSERT INTO werk_tbl
             SET 
-            Werkbez = '$bezeichnung',
-            Kapazität = '$kapazität';";
+            W_ID = '$bezeichnung',
+            Kapazitaet_fix = '$kapazität';";
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 

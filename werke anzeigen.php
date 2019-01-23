@@ -159,13 +159,14 @@
             <br><br><br><br><br><br>
               <center>  <h2>Werk anzeigen</h2></center> 
                
-              <center>  <p>Hier können Werke eingesehen und geändert werden.</p> </center> 
+              <center>  <p>Hier können die Werke eingesehen werden.</p> </center> 
               <div style="width:60%;" class="container">
 
         <table>
                               <tr>
                                 <th>Werk-ID:</th>
-                                <th>Kapazität:</th>
+                                <th>Max. Kapazität:</th>
+                                <th>Aktuelle Kapazität</th>
                               </tr>
                               <?php
                                     /* DB Verbindung herstellen */
@@ -184,11 +185,13 @@
                                     {
                                         // Laden der Werk aus der Datenbank
                                         $w_id =  $user_db["W_ID"];
-                                        $kapazität =  $user_db["Kapazitaet"];
+                                        $kapazität =  $user_db["Kapazitaet_fix"];
+                                        $auslastung =  $user_db["Kapazitaet_aktuell"];
                                         echo("
                                         <tr>
                                             <td>$w_id </td>
                                             <td>$kapazität</td>
+                                            <td>$auslastung</td>
                                             </tr>
                                         ");       
                                     }

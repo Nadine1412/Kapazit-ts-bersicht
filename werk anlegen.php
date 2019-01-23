@@ -167,13 +167,13 @@
            <div class="col-md-6">
             
             <form name="WerkeAnlegen" method="post" action="createWerk.php">
-                <label>Werkbezeichnung:</label>
+                
                 <div class="row">
                     <div class="col-md-7">
-                         Bezeichnung:
+                        Werk-ID:
                         <input type="text" name = "bezeichnung" class="form-control" required>
                         Kapazität:
-                        <input type="text" name = "kapazität" class="form-control" required>
+                        <input type="text" name = "kapazitaetfix" class="form-control" required>
                     </div>
                 </div>
                 

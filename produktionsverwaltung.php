@@ -1,5 +1,16 @@
 <!-- Ist die Produktionsverwaltung! -->
 
+<?php
+    /* DB Verbindung herstellen */
+    define("DB_HOST", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "");
+    define("DB_DATABASE", "kapauebersicht_db");
+
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+
+?>
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -172,20 +183,68 @@
         </div>
         <div class="col-md-6">
          
-         <form name="Produktionszuweisung" method="post" action="createWerk.php">
-             <label>Werkbezeichnung:</label>
+         <form name="Produktionszuweisung" method="post" action="produktionsverwaltungVerarbeiten.php">
              <div class="row">
                  <div class="col-md-7">
-                      Bezeichnung:
-                     <input type="text" name = "bezeichnung" class="form-control" required>
-                     Kapazität:
-                     <input type="text" name = "kapazität" class="form-control" required>
-                 </div>
+                    Produkt-ID:
+                    
+                    <select name="produktID" class="form-control">
+                        <?php
+
+                             // Auslesen aller vorhandenen Produkt-ID aus der Datenbank
+                             $query2 = "SELECT P_ID FROM produkt_tbl"; 
+
+                             $result = mysqli_query($db, $query2); //Query ausführen und ergebnis speichern
+ 
+                             while($produkt_db = $result->fetch_assoc())
+                             {
+                                 $p_id =  $produkt_db["P_ID"];
+                                 // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
+                                 echo "<option value=$p_id> $p_id </option>";
+                             }
+                        ?>
+                    </select>
+
+                     Werk-ID:
+                     <select name="werkID" class="form-control">
+                        <?php
+
+                            // Auslesen aller vorhandenen Werk-ID aus der Datenbank
+                            $query1 = "SELECT W_ID FROM werk_tbl"; 
+
+                            $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+
+                            while($werk_db = $result->fetch_assoc())
+                            {
+                                $w_id =  $werk_db["W_ID"];
+                                // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
+                                echo "<option value=$w_id> $w_id </option>";
+                            }
+                        ?>
+                    </select>
+                </div>
+                        </div>
+            <div class="row">        
+                <div class="col-md-7">
+                    Anzahl-Produkte:
+                    <input type="text" name = "pAnzahl" class="form-control" required>
+                    Zuweisungsdatum:
+                    <input type="date" name = "planungsdatum" class="form-control" required>
+                    Quartal:
+                    <select name="quartal" class="form-control">
+                         <option value="01/19">01/19</option>
+                         <option value="02/19">02/19</option>
+                         <option value="03/19">03/19</option>
+                         <option value="04/19">04/19</option>
+                    </select>
+                        
+                  </div>
              </div>
              
                  <p></p>
-             <button type="submit">Daten speichern</button>
+             <button type="submit">Produkte zuweisen</button>
              </form>
+                        </div> 
          </div>
      </div>
         <br><br>
