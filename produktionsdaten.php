@@ -119,7 +119,7 @@
     </style>
 </head>
 <body>
-        <div class="navbar">
+<div class="navbar">
                 <ul>
                     <li><a class="active" href="startseite.html">Home</a></li>
                     <li><a href="Profil anzeigen.php">Profil</a>
@@ -140,13 +140,20 @@
                             <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
                         </ul>
                     </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a></li>
-                    <ul>
-                        <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                    </ul>
+                    <li><a href="Werke anzeigen.php">Werk</a>
+                        <ul>
+                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                        <ul>
+                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>     
+            </div>      
             <section id="container" class="container">
 
             <br><br><br><br><br><br>
@@ -159,7 +166,6 @@
                                 <th>PD_ID:</th>
                                 <th>Produkt:</th>
                                 <th>Anzahl:</th>
-                                <th>Werk:</th>
                               </tr>
                               <?php
                                     /* DB Verbindung herstellen */
@@ -170,25 +176,25 @@
 
                                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                    $query1 = "SELECT * FROM produktionsdaten_tbl";
+                                    $query1 = "SELECT * FROM produkt_tbl";
 
                                     $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
                                     while($user_db = $result->fetch_assoc())
                                     {
                                         // Laden der Userdaten aus der Datenbank
-                                        $userPDID =  $user_db["PD_ID"];
-                                        $userProdukt =  $user_db["Produkt"];
+                                        $userPDID =  $user_db["P_ID"];
+                                        $userProdukt =  $user_db["Produktbez"];
                                         $userAnzahl =  $user_db["Anzahl"];
-                                        $userWerk =  $user_db["Werk"]; 
+                                        // $userWerk =  $user_db["Werk"]; 
                                         echo("
                                         <tr>
                                             <td>$userPDID</td>
                                             <td>$userProdukt</td>
                                             <td>$userAnzahl </td>
-                                            <td>$userWerk</td>
                                             </tr>
-                                        ");       
+                                        ");   
+                                        // <td>$userWerk</td>    
                                     }
                                 ?>  
                          </table>

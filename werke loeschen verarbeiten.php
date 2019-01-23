@@ -1,6 +1,6 @@
 <?php
 
-$selectedPid = $_POST["Produktloeschen"];
+$selectedWid = $_POST["Werkeloeschen"];
 
 /* DB Verbindung herstellen */
 define("DB_HOST", "localhost");
@@ -10,15 +10,15 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
- //Mitglieder löschen
- $query1 ="DELETE FROM produkt_tbl WHERE P_ID LIKE '$selectedPid' ";
+ //Werke löschen
+ $query1 ="DELETE FROM werk_tbl WHERE W_ID LIKE '$selectedWid' ";
 
 $result = mysqli_query($db, $query1);
 
 if($result)
 {
-     # Weiterleitung auf die Mitglied löschen Seite;
-    header('location: produkte loeschen.php');
+     # Weiterleitung auf die Werke löschen Seite;
+    header('location: werke loeschen.php');
     exit(1);
 
 }

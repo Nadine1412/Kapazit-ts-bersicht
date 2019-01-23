@@ -124,7 +124,7 @@
     </style>
 </head>
 <body>
-        <div class="navbar">
+<div class="navbar">
                 <ul>
                     <li><a class="active" href="startseite.html">Home</a></li>
                     <li><a href="Profil anzeigen.php">Profil</a>
@@ -145,13 +145,20 @@
                             <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
                         </ul>
                     </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a></li>
-                    <ul>
-                        <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                    </ul>
+                    <li><a href="Werke anzeigen.php">Werk</a>
+                        <ul>
+                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                        <ul>
+                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>   
+            </div>    
         <section id="container" class="container">
             <br><br><br><br><br><br>
             <div class="container">
@@ -180,31 +187,24 @@
                         <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control" readonly>
                     </div>
                 </div>
-                <label>Geburtsdatum:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="date" name = "birthday" value="<?php echo($_SESSION["userBirthday"]) ?>" class="form-control" readonly>
-                    </div>
-                </div>
                 <label>E-Mail:</label>
                 <div class="row">
                     <div class="col-md-7">
                         <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control" readonly>
                     </div>
                 </div>
-                <label>Rolle:</label>
+                <label>Position:</label>
                 <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "role" value="<?php echo($_SESSION["userRoleString"]) ?>" class="form-control" readonly>
+                    <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" readonly>
                     </div>
                 </div>
-                <label>Status:</label>
+                <label>Fachbereich:</label>
                 <div class="row">
                     <div class="col-md-7">
-                    <input type="text" name = "state" value="<?php echo($_SESSION["userState"]) ?>" class="form-control" readonly>
+                    <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" readonly>
                     </div>
-                </div>
-                
+                </div>               
                     <p></p>
                 <input type="button" value="Profil ändern" onClick="window.location.href='Profil ändern.php'">
                 </form>

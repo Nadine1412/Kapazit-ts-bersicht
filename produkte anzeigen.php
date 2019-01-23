@@ -118,7 +118,7 @@
     </style>
 </head>
 <body>
-        <div class="navbar">
+<div class="navbar">
                 <ul>
                     <li><a class="active" href="startseite.html">Home</a></li>
                     <li><a href="Profil anzeigen.php">Profil</a>
@@ -139,13 +139,20 @@
                             <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
                         </ul>
                     </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a></li>
-                    <ul>
-                        <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                    </ul>
+                    <li><a href="Werke anzeigen.php">Werk</a>
+                        <ul>
+                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                        <ul>
+                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>
+            </div> 
 
                     
         <section id="container" class="container">
@@ -177,9 +184,9 @@
                                     while($user_db = $result->fetch_assoc())
                                     {
                                         // Laden der Ausbildungsdaten aus der Datenbank
-                                        $p_id =  $user_db["A_ID"];
-                                        $produktbezeichnung =  $user_db["produktbezeichnung"];
-                                        $anzahl =  $user_db["anzahl"];
+                                        $p_id =  $user_db["P_ID"];
+                                        $produktbezeichnung =  $user_db["Produktbez"];
+                                        $anzahl =  $user_db["Anzahl"];
                                         echo("
                                         <tr>
                                             <td>$p_id </td>

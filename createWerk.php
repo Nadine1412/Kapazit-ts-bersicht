@@ -1,6 +1,6 @@
 <?php
 $bezeichnung = $_POST['bezeichnung'];
-$anzahl = $_POST['anzahl'];
+$kapazität = $_POST['kapazität'];
 
 
 /* DB Verbindung herstellen */
@@ -11,25 +11,25 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-// Ausbildung hinzufügen
- $query1 = "INSERT INTO produkt_tbl
+// Werk hinzufügen
+ $query1 = "INSERT INTO werk_tbl
             SET 
-            Produktbez = '$bezeichnung',
-            Anzahl = '$anzahl';";
+            Werkbez = '$bezeichnung',
+            Kapazität = '$kapazität';";
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
     if($check)
     {
-        # Weiterleitung auf die Profil anzeigen Seite;
-        header('location: produkte anzeigen.php');
+        # Weiterleitung auf die Werk anzeigen Seite;
+        header('location: werke anzeigen.php');
         exit(1);
 
     }
     else
     {
-        echo "Das Produkt konnte nicht gelöscht werden.";
-        header('location: produkte anlegen.php');
+        echo "Das Werk konnte nicht gelöscht werden.";
+        header('location: werke anlegen.php');
         exit();
     }
  
