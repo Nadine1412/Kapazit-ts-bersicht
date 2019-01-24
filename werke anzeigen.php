@@ -175,6 +175,7 @@
                                     define("DB_PASSWORD", "");
                                     define("DB_DATABASE", "kapauebersicht_db");
 
+
                                     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
                                     $query1 = "SELECT * FROM werk_tbl";
@@ -185,6 +186,7 @@
                                     {
                                         // Laden der Werk aus der Datenbank
                                         $w_id =  $user_db["W_ID"];
+
                                         $kapazität =  $user_db["Kapazitaet_fix"];
                                         $auslastung =  $user_db["Kapazitaet_aktuell"];
                                         echo("

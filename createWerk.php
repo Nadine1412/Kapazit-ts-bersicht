@@ -15,7 +15,8 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
  $query1 = "INSERT INTO werk_tbl
             SET 
             W_ID = '$bezeichnung',
-            Kapazitaet_fix = '$kapazität';";
+            Kapazitaet_fix = '$kapazität',
+            Kapazitaet_aktuell = '$kapazität'";
 
  $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
 
