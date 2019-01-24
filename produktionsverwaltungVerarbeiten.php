@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $p_id = $_POST['produktID'];
 $w_id = $_POST['werkID'];
 $pAnzahl = $_POST['pAnzahl'];
@@ -36,6 +38,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
         $werk_db = $kapa_result->fetch_assoc();
         $kapazitaet_aktuell_alt = $werk_db["Kapazitaet_aktuell"];
 
+        $_SESSION["w_id"] = $w_id;
 
         $neue_Kapazitaet_aktuell = $kapazitaet_aktuell_alt - $pAnzahl;
 
@@ -49,7 +52,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
          # weiterleitung auf die seite nach erfolgreichem login;
 
-        header('location: produktionsverwaltung.php');
+        header('location: KapaKuchenDiagrammVerarbeiten.php');
         exit(1);
     }
     else

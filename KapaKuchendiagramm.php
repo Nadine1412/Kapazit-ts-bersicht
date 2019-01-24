@@ -1,3 +1,26 @@
+<?php
+    session_start();
+    // if($_SESSION["w_id"]== null)
+    // {
+    //     $_SESSION["w_id"] = "";
+    // }
+    /* DB Verbindung herstellen */
+    define("DB_HOST", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASSWORD", "");
+    define("DB_DATABASE", "kapauebersicht_db");
+
+    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+?>
+
+<script>
+    function changeWerk() {
+        var subButton =  document.getElementById("button1");
+        subButton.click();
+    }
+</script>
+
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -160,14 +183,45 @@ ul ul ul{
     <section id="charts" class="charts">
         <br><br><br><br><br><br>
         <center>
-            <h1>Bedarfs- und Kapazitätsabgleich Mexico</h1>
+            <h1>Bedarfs- und Kapazitätsabgleich</h1>
+            <div style="margin-top:60px">Bitte wählen Sie ein Werk aus:</div>
         </center>
         <p></p>
-        <center>
-            <input type="button" value="Zurück" onClick="window.location.href='pie.html'">
-        </center>
+    
         <p></p>
+        <form name="kapaKuchenVerarbeitenFormular" method="post" action="KapaKuchenDiagrammVerarbeiten.php">
 
+            <div style="width:20%;" class="container">
+                <select name="werkID" class="form-control" onchange="changeWerk();">
+                            <?php
+
+                                // Auslesen aller vorhandenen Werk-ID aus der Datenbank
+                                $query1 = "SELECT W_ID FROM werk_tbl"; 
+
+                                $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+
+                                while($werk_db = $result->fetch_assoc())
+                                {
+                                    $w_id =  $werk_db["W_ID"];
+                                    // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
+
+                                    if($w_id == $_SESSION["w_id"])
+                                    {
+                                        echo "<option value=$w_id selected> $w_id </option>";
+                                    }
+                                    else
+                                    {
+                                        echo "<option value=$w_id> $w_id </option>";
+                                    }
+
+                                }
+                            ?>
+                </select>
+            </div>
+            
+            <input  style="visibility:hidden" type="submit" class="button"  name="selectedWID" id="button1" />
+
+        </form>
         <div style="width:60%;" class="container">
             <canvas id="myChart" width="450" height="200"></canvas>
             <script>
@@ -175,10 +229,12 @@ ul ul ul{
                 var myChart = new Chart(ctx, {
                     type: 'pie',
                     data: {
-                        labels: ["Mexico","Produkt 2","Produkt 3","Produkt 4"],
+                    
+                    labels: ["Kapazitaet","Auslastung"],
                         datasets: [{
-                            label: "Kapazität",
-                            data: [100],
+                            label: "Kapazitaet",
+                            data: [<?php echo( $_SESSION["kapazitaet"]) ?>, <?php echo( $_SESSION["kapadiv"]) ?>],
+
                             backgroundColor: [
                                 'rgba(102, 255, 132, 0.6)',
                                 'rgba(54, 162, 235, 0.6)',
@@ -195,30 +251,6 @@ ul ul ul{
                                 'rgba(153, 102, 255, 1)',
                                 'rgba(255, 159, 64, 1)'
                             ]
-                        },{
-                            label: "Bedarf",
-                            data: [0,33,23,22],
-                            backgroundColor: [
-                                'rgba(15, 11, 235, 0.6)',
-                                'rgba(15, 11, 235, 0.6)',
-                                
-                                'rgba(15, 11, 235, 0.6)',
-                                'rgba(15, 11, 235, 0.6)',
-                                
-                                'rgba(15, 11, 235, 0.6)',
-                                'rgba(15, 11, 235, 0.6)',
-
-                            ],
-                            borderColor: [
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255,99,132,1)',
-                                
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                
-                                'rgba(255, 159, 64, 1)',
-                                'rgba(153, 102, 255, 1)'
-                            ],
                         }]
                     },ons: {
                         scales: {
@@ -230,10 +262,11 @@ ul ul ul{
                         }
                     }
                 });
+
                 </script>
-        </div>
+
         <br><br>
-        <input type="button" value="Logout" onClick="window.location.href='index.html'">
+        
         <br><br><br><br><br><br><br><br>
     </section>
 </body>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <head>
-    <title>Produktionsdaten anzeigen</title>
+    <title>Produktionsdaten löschen</title>
     <style>
             table {
                 font-family: arial, sans-serif;
@@ -157,9 +157,9 @@
             <section id="container" class="container">
 
             <br><br><br><br><br><br>
-               <center> <h2>Produktionsdaten anzeigen</h2> </center>
-               
-                <center><p>Hier können Sie die Produktionsdaten einsehen und als PDF exportieren.</p></center>
+               <center> <h2>Produktionsdaten löschen</h2> </center>
+
+               <form name="produktionsdatenloeschenFormular" method="post" action="produktionsdaten loeschen verarbeiten.php">
                 <div style="width:60%;" class="container">
                 <table>
                               <tr>
@@ -170,6 +170,7 @@
                                 <th>Quartal:</th>
                                 <th>P_ID:</th>
                                 <th>Anzahl zugewiesen:</th>
+                                <th>Daten löschen</th>
                               </tr>
                               <?php
                                     /* DB Verbindung herstellen */
@@ -204,15 +205,16 @@
                                             <td>$quartal </td>
                                             <td>$p_id</td>
                                             <td>$anzahlZugewiesen </td>
+                                            <td><button type='submit' name='auftragLoeschen' value='$a_id'>Löschen</button></td>
                                             </tr>
                                         ");   
                                     }
                                 ?>  
                          </table>
+                                </form>
                          
                     <p></p>
                 <input type="button" value="PDF Export" onClick="window.location.href='dompdf1.php'">
-                <input type="button" value="Produktionsdaten löschen" onClick="window.location.href='produktionsdaten loeschen.php'">
         <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
 </body>
