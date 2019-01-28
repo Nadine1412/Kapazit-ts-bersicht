@@ -10,14 +10,14 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
- //Mitglieder löschen
+ //Produkte löschen
  $query1 ="DELETE FROM produkt_tbl WHERE P_ID LIKE '$selectedPid' ";
 
 $result = mysqli_query($db, $query1);
 
 if($result)
 {
-     # Weiterleitung auf die Mitglied löschen Seite;
+     # Weiterleitung auf die Produkte löschen Seite;
     header('location: produkte loeschen.php');
     exit(1);
 
