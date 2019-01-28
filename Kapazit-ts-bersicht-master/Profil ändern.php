@@ -6,12 +6,10 @@ session_start();
   define("DB_HOST", "localhost");
   define("DB_USER", "root");
   define("DB_PASSWORD", "");
-  define("DB_DATABASE", "bergwacht_db");
+  define("DB_DATABASE", "kapauebersicht_db");
 
   $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-
   ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -135,94 +133,94 @@ session_start();
 </head>
 <body>
 <div class="navbar">
-                <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div> 
-        <section id="container" class="container">
-            <br><br><br><br><br><br>
-            <div class="container">
+    <ul>
+        <li><a class="active" href="startseite.html">Home</a></li>
+        <li><a href="Profil anzeigen.php">Profil</a>
+            <ul>
+                <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                <li><a href="Profil ändern.php">Profil ändern</a></li>
+            </ul>
+        </li>
+        <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+            <ul>
+                <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+            </ul>
+        </li>
+        <li><a href="Produkte anzeigen.php">Produkte</a>
+            <ul>
+                <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+            </ul>
+        </li>
+        <li><a href="Werke anzeigen.php">Werk</a>
+            <ul>
+                <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                <li><a href="Werk loeschen.php">Werk löschen</a></li>
+            </ul>
+        </li>
+        <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+            <ul>
+                <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+            </ul>
+        </li>
+    </ul>
+    <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+</div> 
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
+        <div class="container">
             <div class="row">
-            <div class="col-md-6">
-                <h2>Profil ändern:</h2>
-               
-                <p>Hier können Sie ihre Nutzerdaten ändern.</p>
-            </div>
-            <div class="col-md-6">
-                <form name="profilaendernFormular" method="post" action="Profil ändern verarbeiten.php">
-                <label>Name :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control">
-                    </div>
+                <div class="col-md-6">
+                    <h2>Profil ändern:</h2>
+                    <p>Hier können Sie ihre Nutzerdaten ändern.</p>
                 </div>
-                <label>Vorname :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control">
-                    </div>
-                </div>
-                <label>E-Mail :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control">
-                    </div>
-                </div>
-                <label>Position:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" >
-                    </div>
-                </div>
-                <label>Fachbereich:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" >
-                    </div>
-                </div>
-                <label>Neues Passwort :*</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="password" name = "newpassword" class="form-control">
-                    </div>
-                </div>
-                <p></p>
-                    <button type="submit">Daten speichern</button>
-                    <p></p>
-                </form>
+                <div class="col-md-6">
+                    <form name="profilaendernFormular" method="post" action="Profil ändern verarbeiten.php">
+                        <label>Name :*</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control">
+                            </div>
+                        </div>
+                        <label>Vorname :*</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control">
+                            </div>
+                        </div>
+                        <label>E-Mail :*</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control">
+                            </div>
+                        </div>
+                        <label>Position:</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                            <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" >
+                            </div>
+                        </div>
+                        <label>Fachbereich:</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                            <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" >
+                            </div>
+                        </div>
+                        <label>Neues Passwort :*</label>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <input type="password" name = "newpassword" class="form-control">
+                            </div>
+                        </div>
+                        <p></p>
+                        <button type="submit">Daten speichern</button>
+                        <p></p>
+                    </form>
+                 </div>  
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
-        </section>
+    </section>
     </body>
 </html>

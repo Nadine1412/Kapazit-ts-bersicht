@@ -1,6 +1,8 @@
 <?php
+//Start der Session
 session_start();
 
+//Übergabe der Variablen aus produktionsverwaltung.php
 $p_id = $_POST['produktID'];
 $w_id = $_POST['werkID'];
 $pAnzahl = $_POST['pAnzahl'];
@@ -13,9 +15,7 @@ define("DB_USER", "root");
 define("DB_PASSWORD", "");
 define("DB_DATABASE", "kapauebersicht_db");
 
-$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
-
-     
+$db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());     
 
 # Auftrag hinzufügen
     $query1="INSERT INTO auftrag_tbl
@@ -26,12 +26,12 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
              Planungsdatum= '$planungsdatum',
              Quartal='$quartal'";
 
-
     $zuweisen = mysqli_query($db, $query1);
 
 
     if($zuweisen)
     {
+        // Berechung der Auslastung eines Werks
         $query2="SELECT Kapazitaet_aktuell FROM werk_tbl WHERE W_ID LIKE '$w_id'";
 
         $kapa_result = mysqli_query($db, $query2);
@@ -40,24 +40,22 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
         $_SESSION["w_id"] = $w_id;
 
-        $neue_Kapazitaet_aktuell = $kapazitaet_aktuell_alt - $pAnzahl;
+        // neue aktuelle Kapazität berechnen
+        $kapazitaet_aktuell_neu = $kapazitaet_aktuell_alt - $pAnzahl;
 
         // Update von Kapazitaet_aktuell von werk_tbl  
         $query3="UPDATE werk_tbl
         SET 
-        Kapazitaet_aktuell = '$neue_Kapazitaet_aktuell' WHERE W_ID LIKE '$w_id' ";
-
+        Kapazitaet_aktuell = '$kapazitaet_aktuell_neu' WHERE W_ID LIKE '$w_id' ";
 
          $updateWerk = mysqli_query($db, $query3);
 
-         # weiterleitung auf die seite nach erfolgreichem login;
-
+         # weiterleitung auf die Diagrammansicht nach deren Neuberechnung
         header('location: KapaKuchenDiagrammVerarbeiten.php');
         exit(1);
     }
     else
-    {
-        
+    {      
        header('location: produktionsverwaltung.php');
         exit();
     }

@@ -1,4 +1,6 @@
 <?php
+
+// Übergabe der Variablen aus produkt anlegen.php
 $bezeichnung = $_POST['bezeichnung'];
 $anzahl = $_POST['anzahl'];
 
@@ -17,11 +19,12 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
             Produktbez = '$bezeichnung',
             Anzahl = '$anzahl';";
 
- $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+//Query ausführen und ergebnis speichern
+ $check = mysqli_query($db, $query1); 
 
     if($check)
     {
-        # Weiterleitung auf die Profil anzeigen Seite;
+        # Weiterleitung auf die Produkt anzeigen Seite;
         header('location: produkte anzeigen.php');
         exit(1);
 

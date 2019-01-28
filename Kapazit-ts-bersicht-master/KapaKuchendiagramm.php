@@ -1,9 +1,7 @@
 <?php
+    // Session starten
     session_start();
-    // if($_SESSION["w_id"]== null)
-    // {
-    //     $_SESSION["w_id"] = "";
-    // }
+
     /* DB Verbindung herstellen */
     define("DB_HOST", "localhost");
     define("DB_USER", "root");
@@ -13,8 +11,10 @@
     $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 ?>
 
+<!-- Funktion, die durch Auswahl in der Dropdown-Liste aufgerufen wird -->
 <script>
     function changeWerk() {
+        // Button klick wird ausgeführt
         var subButton =  document.getElementById("button1");
         subButton.click();
     }
@@ -198,13 +198,14 @@ ul ul ul{
                                 // Auslesen aller vorhandenen Werk-ID aus der Datenbank
                                 $query1 = "SELECT W_ID FROM werk_tbl"; 
 
-                                $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+                                //Query ausführen und ergebnis speichern
+                                $result = mysqli_query($db, $query1); 
 
                                 while($werk_db = $result->fetch_assoc())
                                 {
                                     $w_id =  $werk_db["W_ID"];
-                                    // Ausgabe jeder einzelnen Rolle für Dropdownliste (select)
 
+                                    // Ausgabe jeder einzelnen Werks ID für Dropdownliste (select)
                                     if($w_id == $_SESSION["w_id"])
                                     {
                                         echo "<option value=$w_id selected> $w_id </option>";
@@ -213,14 +214,13 @@ ul ul ul{
                                     {
                                         echo "<option value=$w_id> $w_id </option>";
                                     }
-
                                 }
                             ?>
                 </select>
             </div>
             
+            <!-- unsichtbarer Button, der durch Dropdown-Auswahl im Script (changeWerk()) gedrückt wird -->
             <input  style="visibility:hidden" type="submit" class="button"  name="selectedWID" id="button1" />
-
         </form>
         <div style="width:60%;" class="container">
             <canvas id="myChart" width="450" height="200"></canvas>

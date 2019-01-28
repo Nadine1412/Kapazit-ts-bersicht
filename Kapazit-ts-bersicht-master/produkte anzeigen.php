@@ -118,90 +118,92 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div> 
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div> 
 
                     
         <section id="container" class="container">
             <br><br><br><br><br><br>
-              <center>  <h2>Produkt anzeigen</h2></center> 
-               
-              <center>  <p>Hier können Produkte aus dem Bestand eingesehen und geändert werden.</p> </center> 
-              <div style="width:60%;" class="container">
+            <center>  <h2>Produkt anzeigen</h2></center>   
+            <center>  <p>Hier können Produkte aus dem Bestand eingesehen und geändert werden.</p> </center> 
+            <div style="width:60%;" class="container">
 
-        <table>
-                              <tr>
-                                <th>Produkt-ID:</th>
-                                <th>Bezeichnung:</th>
-                                <th>Anzahl:</th>
-                              </tr>
-                              <?php
-                                    /* DB Verbindung herstellen */
-                                    define("DB_HOST", "localhost");
-                                    define("DB_USER", "root");
-                                    define("DB_PASSWORD", "");
-                                    define("DB_DATABASE", "kapauebersicht_db");
+                <table>
+                    <tr>
+                        <th>Produkt-ID:</th>
+                        <th>Bezeichnung:</th>
+                        <th>Anzahl:</th>
+                    </tr>
+                    <?php
+                        /* DB Verbindung herstellen */
+                        define("DB_HOST", "localhost");
+                        define("DB_USER", "root");
+                        define("DB_PASSWORD", "");
+                        define("DB_DATABASE", "kapauebersicht_db");
 
-                                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                        $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                    $query1 = "SELECT * FROM produkt_tbl";
+                        // Produktdaten auslesen
+                        $query1 = "SELECT * FROM produkt_tbl";
 
-                                    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+                        //Query ausführen und ergebnis speichern
+                        $result = mysqli_query($db, $query1); 
 
-                                    while($user_db = $result->fetch_assoc())
-                                    {
-                                        // Laden der Produktdaten aus der Datenbank
-                                        $p_id =  $user_db["P_ID"];
-                                        $produktbezeichnung =  $user_db["Produktbez"];
-                                        $anzahl =  $user_db["Anzahl"];
-                                        echo("
-                                        <tr>
-                                            <td>$p_id </td>
-                                            <td>$produktbezeichnung</td>
-                                            <td>$anzahl</td>
-                                            </tr>
-                                        ");       
-                                    }
-                                ?>  
-                         </table>
-                         <p></p>
+                        while($produkt_db = $result->fetch_assoc())
+                        {
+                            // Laden der Produktdaten aus der Datenbank
+                            $p_id =  $produkt_db["P_ID"];
+                            $produktbezeichnung =  $produkt_db["Produktbez"];
+                            $anzahl =  $produkt_db["Anzahl"];
+
+                            // Ausgabe der Produktdaten in einer Tabelle
+                            echo("
+                            <tr>
+                                <td>$p_id </td>
+                                <td>$produktbezeichnung</td>
+                                <td>$anzahl</td>
+                                </tr>
+                            ");       
+                        }
+                    ?>  
+                </table>
+                <p></p>
                 <input type="button" value="Produkt anlegen" onClick="window.location.href='produkte anlegen.php'">
                 <input type="button" value="Produkt löschen" onClick="window.location.href='produkte loeschen.php'">
-        </section>
-
-        
+            </div>
+        </section>    
 </body>
 </html>

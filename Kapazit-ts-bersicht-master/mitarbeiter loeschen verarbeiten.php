@@ -1,5 +1,5 @@
 <?php
-
+// Übergabe der Variable aus mitarbeiter loeschen.php
 $selectedMid = $_POST["Mitarbeiterloeschenbtn"];
 
 /* DB Verbindung herstellen */

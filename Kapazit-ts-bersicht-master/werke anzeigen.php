@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <head>
-    <title>Produkt anzeigen</title>
+    <title>Werke anzeigen</title>
     <style>
             table {
                 font-family: arial, sans-serif;
@@ -118,92 +118,90 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div>
+          
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
+        <center>  <h2>Werk anzeigen</h2></center> 
+        <center>  <p>Hier können die Werke eingesehen werden.</p> </center> 
+        <div style="width:60%;" class="container">
+            <table>
+                <tr>
+                    <th>Werk-ID:</th>
+                    <th>Max. Kapazität:</th>
+                    <th>Aktuelle Kapazität</th>
+                </tr>
+                <?php
+                    /* DB Verbindung herstellen */
+                    define("DB_HOST", "localhost");
+                    define("DB_USER", "root");
+                    define("DB_PASSWORD", "");
+                    define("DB_DATABASE", "kapauebersicht_db");
 
-                    
-        <section id="container" class="container">
-            <br><br><br><br><br><br>
-              <center>  <h2>Werk anzeigen</h2></center> 
-               
-              <center>  <p>Hier können die Werke eingesehen werden.</p> </center> 
-              <div style="width:60%;" class="container">
+                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-        <table>
-                              <tr>
-                                <th>Werk-ID:</th>
-                                <th>Max. Kapazität:</th>
-                                <th>Aktuelle Kapazität</th>
-                              </tr>
-                              <?php
-                                    /* DB Verbindung herstellen */
-                                    define("DB_HOST", "localhost");
-                                    define("DB_USER", "root");
-                                    define("DB_PASSWORD", "");
-                                    define("DB_DATABASE", "kapauebersicht_db");
+                    // Werksdaten auslesen
+                    $query1 = "SELECT * FROM werk_tbl";
 
+                    //Query ausführen und ergebnis speichern
+                    $result = mysqli_query($db, $query1); 
 
-                                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                    while($werk_db = $result->fetch_assoc())
+                    {
+                        // Laden der Werkdaten aus der Datenbank
+                        $w_id =  $werk_db["W_ID"];
+                        $kapazität =  $werk_db["Kapazitaet_fix"];
+                        $auslastung =  $werk_db["Kapazitaet_aktuell"];
 
-                                    $query1 = "SELECT * FROM werk_tbl";
-
-                                    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-                                    while($user_db = $result->fetch_assoc())
-                                    {
-                                        // Laden der Werkdaten aus der Datenbank
-                                        $w_id =  $user_db["W_ID"];
-
-                                        $kapazität =  $user_db["Kapazitaet_fix"];
-                                        $auslastung =  $user_db["Kapazitaet_aktuell"];
-                                        echo("
-                                        <tr>
-                                            <td>$w_id </td>
-                                            <td>$kapazität</td>
-                                            <td>$auslastung</td>
-                                            </tr>
-                                        ");       
-                                    }
-                                ?>  
-                         </table>
-                         <p></p>
-                <input type="button" value="Werk anlegen" onClick="window.location.href='werk anlegen.php'">
-                <input type="button" value="Werk löschen" onClick="window.location.href='werk loeschen.php'">
-        </section>
-
-        
+                        // Ausgeben der Werksdaten in Tabelle
+                        echo("
+                        <tr>
+                            <td>$w_id </td>
+                            <td>$kapazität</td>
+                            <td>$auslastung</td>
+                            </tr>
+                        ");       
+                    }
+                ?>  
+            </table>
+            <p></p>
+            <input type="button" value="Werk anlegen" onClick="window.location.href='werk anlegen.php'">
+            <input type="button" value="Werk löschen" onClick="window.location.href='werk loeschen.php'">
+        </div>
+    </section>     
 </body>
 </html>

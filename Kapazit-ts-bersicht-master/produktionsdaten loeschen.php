@@ -120,102 +120,105 @@
 </head>
 <body>
 <div class="navbar">
-                <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>      
-            <section id="container" class="container">
+    <ul>
+        <li><a class="active" href="startseite.html">Home</a></li>
+        <li><a href="Profil anzeigen.php">Profil</a>
+            <ul>
+                <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                <li><a href="Profil ändern.php">Profil ändern</a></li>
+            </ul>
+        </li>
+        <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+            <ul>
+                <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+            </ul>
+        </li>
+        <li><a href="Produkte anzeigen.php">Produkte</a>
+            <ul>
+                <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+            </ul>
+        </li>
+        <li><a href="Werke anzeigen.php">Werk</a>
+            <ul>
+                <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                <li><a href="Werk loeschen.php">Werk löschen</a></li>
+            </ul>
+        </li>
+        <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+            <ul>
+                <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+            </ul>
+        </li>
+    </ul>
+    <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+</div>      
+<section id="container" class="container">
 
-            <br><br><br><br><br><br>
-               <center> <h2>Produktionsdaten löschen</h2> </center>
+    <br><br><br><br><br><br>
+    <center> <h2>Produktionsdaten löschen</h2> </center>
 
-               <form name="produktionsdatenloeschenFormular" method="post" action="produktionsdaten loeschen verarbeiten.php">
-                <div style="width:60%;" class="container">
-                <table>
-                              <tr>
-                                <th>A_ID:</th>
-                                <th>Planungsdatum:</th>
-                                <th>W_ID:</th>
-                                <th>PL_ID:</th>
-                                <th>Quartal:</th>
-                                <th>P_ID:</th>
-                                <th>Anzahl zugewiesen:</th>
-                                <th>Daten löschen</th>
-                              </tr>
-                              <?php
-                                    /* DB Verbindung herstellen */
-                                    define("DB_HOST", "localhost");
-                                    define("DB_USER", "root");
-                                    define("DB_PASSWORD", "");
-                                    define("DB_DATABASE", "kapauebersicht_db");
+    <form name="produktionsdatenloeschenFormular" method="post" action="produktionsdaten loeschen verarbeiten.php">
+        <div style="width:60%;" class="container">
+            <table>
+                <tr>
+                    <th>A_ID:</th>
+                    <th>Planungsdatum:</th>
+                    <th>W_ID:</th>
+                    <th>PL_ID:</th>
+                    <th>Quartal:</th>
+                    <th>P_ID:</th>
+                    <th>Anzahl zugewiesen:</th>
+                    <th>Daten löschen</th>
+                </tr>
+                <?php
+                    /* DB Verbindung herstellen */
+                    define("DB_HOST", "localhost");
+                    define("DB_USER", "root");
+                    define("DB_PASSWORD", "");
+                    define("DB_DATABASE", "kapauebersicht_db");
 
-                                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                    $query1 = "SELECT * FROM auftrag_tbl";
+                    // Auftragsdaten auslesen
+                    $query1 = "SELECT * FROM auftrag_tbl";
 
-                                    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+                    //Query ausführen und ergebnis speichern
+                    $result = mysqli_query($db, $query1); 
 
-                                    while($auftrag_db = $result->fetch_assoc())
-                                    {
-                                        // Laden der Planungsdaten aus der Datenbank
-                                        $a_id =  $auftrag_db["A_ID"];
-                                        $planungsdatum =  $auftrag_db["Planungsdatum"];
-                                        $w_id =  $auftrag_db["W_ID"];
-                                        $pl_id =  $auftrag_db["PL_ID"];
-                                        $quartal =  $auftrag_db["Quartal"];
-                                        $p_id =  $auftrag_db["P_ID"];
-                                        $anzahlZugewiesen =  $auftrag_db["Anzahl_zugewiesen"];
+                    while($auftrag_db = $result->fetch_assoc())
+                    {
+                        // Laden der Planungsdaten aus der Datenbank
+                        $a_id =  $auftrag_db["A_ID"];
+                        $planungsdatum =  $auftrag_db["Planungsdatum"];
+                        $w_id =  $auftrag_db["W_ID"];
+                        $pl_id =  $auftrag_db["PL_ID"];
+                        $quartal =  $auftrag_db["Quartal"];
+                        $p_id =  $auftrag_db["P_ID"];
+                        $anzahlZugewiesen =  $auftrag_db["Anzahl_zugewiesen"];
 
-                                        echo("
-                                        <tr>
-                                            <td>$a_id</td>
-                                            <td>$planungsdatum</td>
-                                            <td>$w_id </td>
-                                            <td>$pl_id</td>
-                                            <td>$quartal </td>
-                                            <td>$p_id</td>
-                                            <td>$anzahlZugewiesen </td>
-                                            <td><button type='submit' name='auftragLoeschen' value='$a_id'>Löschen</button></td>
-                                            </tr>
-                                        ");   
-                                    }
-                                ?>  
-                         </table>
-                                </form>
-                         
-                    <p></p>
-                <input type="button" value="PDF Export" onClick="window.location.href='dompdf1.php'">
-        <br><br><br><br><br><br><br><br><br><br><br><br>
-        </section>
+                        // Ausgabe der Planungsdaten in einer Tabelle
+                        echo("
+                        <tr>
+                            <td>$a_id</td>
+                            <td>$planungsdatum</td>
+                            <td>$w_id </td>
+                            <td>$pl_id</td>
+                            <td>$quartal </td>
+                            <td>$p_id</td>
+                            <td>$anzahlZugewiesen </td>
+                            <td><button type='submit' name='auftragLoeschen' value='$a_id'>Löschen</button></td>
+                            </tr>
+                        ");   
+                    }
+                ?>  
+            </table>
+        </div>
+    </form>                     
+    <p></p>
+    <input type="button" value="PDF Export" onClick="window.location.href='dompdf1.php'">
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+</section>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <head>
-    <title>Produkte löschen</title>
+    <title>Werk löschen</title>
     <style>
             table {
                 font-family: arial, sans-serif;
@@ -118,83 +118,85 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>        
-        <section id="container" class="container">
-            <br><br><br><br><br><br>
-              <center>  <h2>Werk löschen</h2></center> 
-               
-              <center>  <p>Hier können Sie Werke aus der Datenbank löschen.</p> </center> 
-              <form name="werkeloeschenFormular" method="post" action="werke loeschen verarbeiten.php">
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div>        
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
+            <center>  <h2>Werk löschen</h2></center> 
+            <center>  <p>Hier können Sie Werke aus der Datenbank löschen.</p> </center> 
+            <form name="werkeloeschenFormular" method="post" action="werke loeschen verarbeiten.php">
+                <div style="width:60%;" id="Werkloeschentbl" class="container">
+                    <table>
+                        <tr>
+                            <th>Werk-ID:</th>
+                            <th>Löschen:</th>
+                        </tr>
+                        <?php
+                            /* DB Verbindung herstellen */
+                            define("DB_HOST", "localhost");
+                            define("DB_USER", "root");
+                            define("DB_PASSWORD", "");
+                            define("DB_DATABASE", "kapauebersicht_db");
 
-              <div style="width:60%;" id="Werkloeschentbl" class="container">
+                            $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                 <table>
-                              <tr>
-                                <th>Werk-ID:</th>
-                                <th>Löschen:</th>
-                              </tr>
-                              <?php
-                                    /* DB Verbindung herstellen */
-                                    define("DB_HOST", "localhost");
-                                    define("DB_USER", "root");
-                                    define("DB_PASSWORD", "");
-                                    define("DB_DATABASE", "kapauebersicht_db");
+                            // Werksdaten auslesen
+                            $query1 = "SELECT * FROM werk_tbl";
 
-                                    $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                            //Query ausführen und ergebnis speichern
+                            $result = mysqli_query($db, $query1); 
 
-                                    $query1 = "SELECT * FROM werk_tbl";
+                            while($werks_db = $result->fetch_assoc())
+                            {
+                                // Laden der Werksdaten aus der Datenbank
+                                $W_id =  $werks_db["W_ID"];
 
-                                    $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
-
-                                    while($user_db = $result->fetch_assoc())
-                                    {
-                                        // Laden der Werkdaten aus der Datenbank
-                                        $W_id =  $user_db["W_ID"];
-                                        echo("
-                                        <tr>
-                                            <td>$W_id </td>
-                                            <td><button type='submit' name='Werkloeschen' value='$W_id'>Löschen</button></td>
-                                            </tr>
-                                        ");       
-                                    }
-                                ?>  
-                         </table>
-                         <p></p>
-                         </form>
+                                // Werks-ID und Löschen-Button in Tabelle ausgeben
+                                echo("
+                                <tr>
+                                    <td>$W_id </td>
+                                    <td><button type='submit' name='Werkloeschen' value='$W_id'>Löschen</button></td>
+                                    </tr>
+                                ");       
+                            }
+                        ?>  
+                    </table>
+                    <p></p>
+                </div>
+            </form>
         </section>
 
         

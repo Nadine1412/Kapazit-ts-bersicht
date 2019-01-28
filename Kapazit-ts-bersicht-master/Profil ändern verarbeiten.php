@@ -3,22 +3,23 @@
 //Session starten
 session_start();
 
+// Übergabe der Variablen aus Profil ändern.php
 $vorname = $_POST['vorname'];
 $nachname = $_POST['name'];
 $position = $_POST['position'];
 $email = $_POST['email'];
 $fachbereich = $_POST['fachbereich'];
 
+// Speichern in Sessionvariablen
 $_SESSION["userForename"] = $vorname;
 $_SESSION["userName"] = $nachname;
 $_SESSION["userEMail"] = $email;
 $_SESSION["userFachbereich"] = $fachbereich;
 $_SESSION["userPosition"] = $position;
 
-
-
 $password = $_POST['newpassword'];
 
+// Passwort wird nur geändert, wenn kein leeres Passwort übergeben wurde
 if(empty($password))
 {
     $password_encrypt = $_SESSION["userPasswordEnc"];

@@ -3,7 +3,6 @@
     session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -124,93 +123,92 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>    
-        <section id="container" class="container">
-            <br><br><br><br><br><br>
-            <div class="container">
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div>    
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
+        <div class="container">
             <div class="row">
-            <div class="col-md-6">
-                <h2>Profil anzeigen</h2>
-               
-                <p>Hier können Sie ihre Nutzerdaten einsehen und ändern.</p>
-            </div>
-            <div class="col-md-6">
-            <label>Mitarbeiter-ID:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "ID"  value="<?php echo($_SESSION["userMID"]) ?>" class="form-control" readonly>
-                    </div>
+                <div class="col-md-6">
+                    <h2>Profil anzeigen</h2>
+                    <p>Hier können Sie ihre Nutzerdaten einsehen und ändern.</p>
                 </div>
-                <label>Name:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control" readonly>
+                <div class="col-md-6">
+                    <label>Mitarbeiter-ID:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name = "ID"  value="<?php echo($_SESSION["userMID"]) ?>" class="form-control" readonly>
+                        </div>
                     </div>
-                </div>
-                <label>Vorname:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control" readonly>
+                    <label>Name:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name = "name" value="<?php echo( $_SESSION["userName"]) ?>" class="form-control" readonly>
+                        </div>
                     </div>
-                </div>
-                <label>E-Mail:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                        <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control" readonly>
+                    <label>Vorname:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name = "vorname" value="<?php echo($_SESSION["userForename"]) ?>" class="form-control" readonly>
+                        </div>
                     </div>
-                </div>
-                <label>Position:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" readonly>
+                    <label>E-Mail:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="email" name = "email" value="<?php echo($_SESSION["userEMail"]) ?>" class="form-control" readonly>
+                        </div>
                     </div>
-                </div>
-                <label>Fachbereich:</label>
-                <div class="row">
-                    <div class="col-md-7">
-                    <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" readonly>
+                    <label>Position:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name = "position" value="<?php echo($_SESSION["userPosition"]) ?>" class="form-control" readonly>
+                        </div>
                     </div>
-                </div>               
+                    <label>Fachbereich:</label>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <input type="text" name = "fachbereich" value="<?php echo($_SESSION["userFachbereich"]) ?>" class="form-control" readonly>
+                        </div>
+                    </div>               
                     <p></p>
-                <input type="button" value="Profil ändern" onClick="window.location.href='Profil ändern.php'">
-                </form>
+                    <input type="button" value="Profil ändern" onClick="window.location.href='Profil ändern.php'">
+                </div>
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
-        </section>
+    </section>
 </body>
 </html>

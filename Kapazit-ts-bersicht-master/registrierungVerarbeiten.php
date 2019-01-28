@@ -1,13 +1,16 @@
 <?php
+// Unit-Test zur Validierung der Email
 require 'C:\xampp\htdocs\Kapazit-ts-bersicht\EmailValidator.php';
 
-
+// Übergabe der Variablen aus registrierung kaue.php
 $vorname = $_POST['vorname'];
 $nachname = $_POST['name'];
 $fachbereich = $_POST['fachbereich'];
 $position = $_POST['position'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+
+// Hashen des Passworts
 $password_encrypt = password_hash($password, PASSWORD_DEFAULT);
 
 /* DB Verbindung herstellen */
@@ -18,12 +21,15 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-// Überpruefen ob der Mitarbeiter bereits vorhanden ist
+// Überpruefen, ob der Mitarbeiter bereits vorhanden ist anhand der Email
  $query1 = "SELECT EMail FROM mitarbeiter_tbl
             WHERE EMail LIKE '$email'"; 
-                //    OR mid LIKE '$maid' AND vorname LIKE '$vorname' AND name LIKE '$nachname'"; 
- $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
- $result = mysqli_num_rows($check); //Prüfen ob Eintrag bereits vorhanden
+
+//Query ausführen und ergebnis speichern
+ $check = mysqli_query($db, $query1); 
+
+//Prüfen ob Eintrag bereits vorhanden
+ $result = mysqli_num_rows($check); 
 
 //  // EmailValidator
 // $emailValidate = new EmailValidator();
@@ -32,13 +38,13 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 
  if ($result) {
      # Mitarbeiter bereits vorhanden
-   // @ToDo Ausgabe, dass Mitarbeiter bereits vorhanden ist.
+   // Ausgabe, dass Mitarbeiter bereits vorhanden ist.
     echo "Email bereits vorhanden";
     exit();
 } else {
 
      # Mitarbeiter hinzufügen
-    $query3="INSERT INTO mitarbeiter_tbl
+    $query2="INSERT INTO mitarbeiter_tbl
              SET 
              Nachname='$nachname',
              Vorname='$vorname',
@@ -46,24 +52,20 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
              EMail= '$email',
              Fachbereich='$fachbereich',
              Passwort='$password_encrypt';";
-    $eintragen = mysqli_query($db, $query3);
+    $eintragen = mysqli_query($db, $query2);
 
     if($eintragen)
     {
 
-         # weiterleitung auf die seite nach erfolgreichem login
-        #header('location: Anmeldung kaue.html');
+         # Weiterleitung auf die Seite nach erfolgreichem Login
         header('location: anmeldung kaue.html');
         exit(1);
     }
     else
     {
-         # weiterleitung auf die Registrierungsseite ...
+         # Weiterleitung auf die Registrierungsseite ...
        header('location: registrierung kaue.php');
         exit();
     }
  } 
-// } else{
-//     echo "E-Mail nicht gültig!";
-// }
 ?>

@@ -1,5 +1,5 @@
 <?php
-
+    // Übergabe der Variable aus produkte loeschen
 $selectedPid = $_POST["Produktloeschen"];
 
 /* DB Verbindung herstellen */

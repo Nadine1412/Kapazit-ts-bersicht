@@ -178,23 +178,25 @@
 
                                         $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
+                                        // Mitarbeiterdaten auslesen
                                         $query1 = "SELECT * FROM mitarbeiter_tbl";
 
-                                        $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+                                        //Query ausführen und ergebnis speichern
+                                        $result = mysqli_query($db, $query1); 
 
-                                        while($user_db = $result->fetch_assoc())
+                                        while($mitarbeiter_db = $result->fetch_assoc())
                                         {
                                             // Laden der Mitarbeiter Daten aus der Datenbank
-                                            $mID =  $user_db["M_ID"];
-                                            $name =  $user_db["Nachname"];
-                                            $forename =  $user_db["Vorname"];
-                                            $position =  $user_db["Position"];
-                                            $eMail =  $user_db["EMail"];
-                                            $fachbereich = $user_db["Fachbereich"];
+                                            $mID =  $mitarbeiter_db["M_ID"];
+                                            $name =  $mitarbeiter_db["Nachname"];
+                                            $forename =  $mitarbeiter_db["Vorname"];
+                                            $position =  $mitarbeiter_db["Position"];
+                                            $eMail =  $mitarbeiter_db["EMail"];
+                                            $fachbereich = $mitarbeiter_db["Fachbereich"];
 
+                                            // Ausgabe der Mitarbeiterdaten in einer Tabelle
                                             echo( 
-                                            "
-                                            <tr> 
+                                            "<tr> 
                                                 <td>$mID</td>
                                                 <td>$name</td>
                                                 <td>$forename</td>

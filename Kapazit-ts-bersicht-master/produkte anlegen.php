@@ -156,33 +156,30 @@
         <section id="container" class="container">
         
             <br><br><br><br><br><br>
-           <div class="container">
-            <div class="row">
-            <div class="col-md-6">
-         
-             <h2>Produkt anlegen</h2>
-               
-               <p>Hier können Sie ein neues Produkt hinzufügen.</p>
-           </div>
-           <div class="col-md-6">
-            
-            <form name="ProduktAnlegen" method="post" action="createProdukt.php">
-                <label>Produktbezeichnung:</label>
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-7">
-                         Bezeichnung
-                        <input type="text" name = "bezeichnung" class="form-control" required>
-                        Anzahl
-                        <input type="text" name = "anzahl" class="form-control" required>
+                    <div class="col-md-6">
+                        <h2>Produkt anlegen</h2>
+                        <p>Hier können Sie ein neues Produkt hinzufügen.</p>
                     </div>
-                </div>
-                
-                    <p></p>
-                <button type="submit">Daten speichern</button>
-                </form>
+                    <div class="col-md-6">
+                        <form name="ProduktAnlegen" method="post" action="createProdukt.php">
+                            <label>Produktbezeichnung:</label>
+                            <div class="row">
+                                <div class="col-md-7">
+                                    Bezeichnung
+                                    <input type="text" name = "bezeichnung" class="form-control" required>
+                                    Anzahl
+                                    <input type="text" name = "anzahl" class="form-control" required>
+                                </div>
+                            </div>
+                            <p></p>
+                            <button type="submit">Daten speichern</button>
+                        </form>
+                      </div>  
+                 </div>
             </div>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
 </body>
 </html>

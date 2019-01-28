@@ -126,123 +126,120 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>      
-            <section id="container" class="container">
-            <br><br><br><br><br><br>
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div>      
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
 
-            <center><h2>Mitarbeiter</h2></center>
-            <p></p>
-            <form name="mitarbeiterloeschenFormular" method="post" action="mitarbeiter loeschen verarbeiten.php">
-            <div style="width:60%;" id="Mitarbeiterloeschentbl"class="container">
-                    
-                            <body>
-                                                        
-                            <table>
-                              <tr>
-                                <th>M_ID</th>
-                                <th>Name</th>
-                                <th>Vorname</th>
-                                <th>EMail</th>
-                                <th>Position</th>
-                                <th>Fachbereich</th>
-                                <th>Daten löschen</th>
-                              </tr>
-                                     <?php
-                                        /* DB Verbindung herstellen */
-                                        define("DB_HOST", "localhost");
-                                        define("DB_USER", "root");
-                                        define("DB_PASSWORD", "");
-                                        define("DB_DATABASE", "kapauebersicht_db");
+        <center><h2>Mitarbeiter</h2></center>
+        <p></p>
+        <form name="mitarbeiterloeschenFormular" method="post" action="mitarbeiter loeschen verarbeiten.php">
+            <div style="width:60%;" id="Mitarbeiterloeschentbl"class="container">                                                    
+                <table>
+                    <tr>
+                        <th>M_ID</th>
+                        <th>Name</th>
+                        <th>Vorname</th>
+                        <th>EMail</th>
+                        <th>Position</th>
+                        <th>Fachbereich</th>
+                        <th>Daten löschen</th>
+                    </tr>
+                        <?php
+                            /* DB Verbindung herstellen */
+                            define("DB_HOST", "localhost");
+                            define("DB_USER", "root");
+                            define("DB_PASSWORD", "");
+                            define("DB_DATABASE", "kapauebersicht_db");
 
-                                        $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
+                            $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-                                        $query1 = "SELECT * FROM mitarbeiter_tbl";
+                            // Mitarbeiterinformationen auslesen
+                            $query1 = "SELECT * FROM mitarbeiter_tbl";
 
-                                        $result = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+                            //Query ausführen und ergebnis speichern
+                            $result = mysqli_query($db, $query1); 
 
-                                        while($user_db = $result->fetch_assoc())
-                                        {
-                                            // Laden der Mitarbeiter Daten aus der Datenbank
-                                            $mID =  $user_db["M_ID"];
-                                            $name =  $user_db["Nachname"];
-                                            $forename =  $user_db["Vorname"];
-                                            $position =  $user_db["Position"];
-                                            $eMail =  $user_db["EMail"];
-                                            $fachbereich = $user_db["Fachbereich"];
-  
-                                            echo( 
-                                            "
-                                            <tr> 
-                                                <td>$mID</td> 
-                                                <td>$name</td>
-                                                <td>$forename</td>
-                                                <td>$eMail</td>
-                                                <td>$position</td>
-                                                <td>$fachbereich</td>
-                                                <td><button type='submit' name='Mitarbeiterloeschenbtn' value='$mID'>Löschen</button></td>
-                                            </tr>");
-                                        }
-                                        
-                                    ?>
+                            while($mitarbeiter_db = $result->fetch_assoc())
+                            {
+                                // Laden der Mitarbeiter Daten aus der Datenbank
+                                $mID =  $mitarbeiter_db["M_ID"];
+                                $name =  $mitarbeiter_db["Nachname"];
+                                $forename =  $mitarbeiter_db["Vorname"];
+                                $position =  $mitarbeiter_db["Position"];
+                                $eMail =  $mitarbeiter_db["EMail"];
+                                $fachbereich = $mitarbeiter_db["Fachbereich"];
 
-                            </table>
-                </div>
-                </form>
-            <!-- <div style="width:60%;" id="KeinAdmin"class="container">
-                Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
+                                // Ausgabe der Mitarbeiterdaten und des Löschen-Buttons in einer Tabelle
+                                echo( 
+                                " <tr> 
+                                    <td>$mID</td> 
+                                    <td>$name</td>
+                                    <td>$forename</td>
+                                    <td>$eMail</td>
+                                    <td>$position</td>
+                                    <td>$fachbereich</td>
+                                    <td><button type='submit' name='Mitarbeiterloeschenbtn' value='$mID'>Löschen</button></td>
+                                </tr>");
+                            }                        
+                        ?>
+                </table>
             </div>
-        <script type="text/javascript">
-           var position = "<?php echo($_SESSION['userPosition']);?>";
-           var table = document.getElementById("Mitarbeiterloeschentbl");
-           var unauthorised = document.getElementById("KeinAdmin");
+        </form>
+                <!-- <div style="width:60%;" id="KeinAdmin"class="container">
+                    Sie haben keine Admin-Rechte und können keine Mitglieder löschen.
+                </div>
+            <script type="text/javascript">
+                var position = "<?php echo($_SESSION['userPosition']);?>";
+                var table = document.getElementById("Mitarbeiterloeschentbl");
+                var unauthorised = document.getElementById("KeinAdmin");
 
-           if(position == "Fachbereichsleiter" || position == "Sachbearbeiter") //Abteilungsleiter //Sachbearbeiter
-           {
-                table.hidden=false;
-                unauthorised.hidden=true;
-           }
-           else
-           {
-                table.hidden=true;
-                unauthorised.hidden=false;
-           }
-        </script> -->
-                <br><br>
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                </section>
-    </body>
+                if(position == "Admin" || position == "Fachbereichsleiter") //Admin oder Fachbereichsleiter
+                {
+                    table.hidden=false;
+                    unauthorised.hidden=true;
+                }
+                else
+                {
+                    table.hidden=true;
+                    unauthorised.hidden=false;
+                }
+            </script> -->
+        <br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </section>
+</body>
 </html>

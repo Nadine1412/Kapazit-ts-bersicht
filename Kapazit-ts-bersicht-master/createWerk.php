@@ -1,4 +1,5 @@
 <?php
+// Übergabe der Variablen aus werk anlegen.php
 $bezeichnung = $_POST['bezeichnung'];
 $kapazität = $_POST['kapazitaetfix'];
 
@@ -18,7 +19,8 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
             Kapazitaet_fix = '$kapazität',
             Kapazitaet_aktuell = '$kapazität'";
 
- $check = mysqli_query($db, $query1); //Query ausführen und ergebnis speichern
+//Query ausführen und ergebnis speichern
+ $check = mysqli_query($db, $query1); 
 
     if($check)
     {

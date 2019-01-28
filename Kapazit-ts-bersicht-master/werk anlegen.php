@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <link rel="Stylesheet" type="text/css" href="bootstrap.css">
 <head>
-    <title>Produkt anlegen</title>
+    <title>Werk anlegen</title>
     <style>
             table {
                 font-family: arial, sans-serif;
@@ -118,71 +118,67 @@
     </style>
 </head>
 <body>
-<div class="navbar">
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="startseite.html">Home</a></li>
+            <li><a href="Profil anzeigen.php">Profil</a>
                 <ul>
-                    <li><a class="active" href="startseite.html">Home</a></li>
-                    <li><a href="Profil anzeigen.php">Profil</a>
-                        <ul>
-                            <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
-                            <li><a href="Profil ändern.php">Profil ändern</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produktionsdaten.php">Produktionsdaten</a>
-                        <ul>
-                            <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
-                            <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Produkte anzeigen.php">Produkte</a>
-                        <ul>
-                            <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
-                            <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Werke anzeigen.php">Werk</a>
-                        <ul>
-                            <li><a href="Werk anlegen.php">Werk pflegen</a></li>
-                            <li><a href="Werk loeschen.php">Werk löschen</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
-                        <ul>
-                            <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="Profil anzeigen.php">Profil anzeigen</a></li>
+                    <li><a href="Profil ändern.php">Profil ändern</a></li>
                 </ul>
-                <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
-            </div>            
-        <section id="container" class="container">
-        
-            <br><br><br><br><br><br>
-           <div class="container">
+            </li>
+            <li><a href="Produktionsdaten.php">Produktionsdaten</a>
+                <ul>
+                    <li><a href="KapaKuchendiagramm.php">Produktionsübersicht</a></li>
+                    <li><a href="produktionsverwaltung.php">Produktionsverwaltung</a></li>
+                </ul>
+            </li>
+            <li><a href="Produkte anzeigen.php">Produkte</a>
+                <ul>
+                    <li><a href="Produkte anlegen.php">Produkte pflegen</a></li>
+                    <li><a href="Produkte loeschen.php">Produkte löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Werke anzeigen.php">Werk</a>
+                <ul>
+                    <li><a href="Werk anlegen.php">Werk pflegen</a></li>
+                    <li><a href="Werk loeschen.php">Werk löschen</a></li>
+                </ul>
+            </li>
+            <li><a href="Mitarbeiter kaue.php">Mitarbeiter</a>
+                <ul>
+                    <li><a href="Mitarbeiter loeschen.php">Mitarbeiter löschen</a></li>
+                </ul>
+            </li>
+        </ul>
+        <input type="button" value="Logout" onClick="window.location.href='Anmeldung kaue.html'">
+    </div>    
+
+    <section id="container" class="container">
+        <br><br><br><br><br><br>
+        <div class="container">
             <div class="row">
-            <div class="col-md-6">
-         
-             <h2>Werk anlegen</h2>
-               
-               <p>Hier können Sie ein neues Werk anlegen.</p>
-           </div>
-           <div class="col-md-6">
-            
-            <form name="WerkeAnlegen" method="post" action="createWerk.php">
-                
-                <div class="row">
-                    <div class="col-md-7">
-                        Werk-ID:
-                        <input type="text" name = "bezeichnung" class="form-control" required>
-                        Kapazität:
-                        <input type="text" name = "kapazitaetfix" class="form-control" required>
-                    </div>
+                <div class="col-md-6">
+                    <h2>Werk anlegen</h2>
+                    <p>Hier können Sie ein neues Werk anlegen.</p>
                 </div>
-                
-                    <p></p>
-                <button type="submit">Daten speichern</button>
-                </form>
+                <div class="col-md-6">
+                    <form name="WerkeAnlegen" method="post" action="createWerk.php">
+                        <div class="row">
+                            <div class="col-md-7">
+                                Werk-ID:
+                                <input type="text" name = "bezeichnung" class="form-control" required>
+                                Kapazität:
+                                <input type="text" name = "kapazitaetfix" class="form-control" required>
+                            </div>
+                        </div>
+                        <p></p>
+                        <button type="submit">Daten speichern</button>
+                    </form>
+                </div>
             </div>
         </div>
         <br><br><br><br><br><br><br><br><br><br><br><br>
-        </section>
+    </section>
 </body>
 </html>
