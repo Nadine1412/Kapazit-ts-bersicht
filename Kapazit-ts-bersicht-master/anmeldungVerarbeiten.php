@@ -67,7 +67,7 @@ if ($result->num_rows != 0)
         echo "Passwort korrekt.";
     } else {
         //Passwort war falsch.
-        // header('location: Anmeldung Bergwacht.html');
+        // header('location: Anmeldung kaue.html');
         echo "Passwort nicht korrekt.";
     
     }  
@@ -75,7 +75,7 @@ if ($result->num_rows != 0)
 else 
 {
     // @ToDo Warnung mit UserId nicht richtig.
-   // header('location: Anmeldung Bergwacht.html');
+   // header('location: Anmeldung kaue.html');
     echo "E-Mail Adresse nicht korrekt.";
 } 
 
