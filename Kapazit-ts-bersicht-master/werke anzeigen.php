@@ -184,7 +184,7 @@
 
                                     while($user_db = $result->fetch_assoc())
                                     {
-                                        // Laden der Werk aus der Datenbank
+                                        // Laden der Werkdaten aus der Datenbank
                                         $w_id =  $user_db["W_ID"];
 
                                         $kapazität =  $user_db["Kapazitaet_fix"];
