@@ -183,7 +183,7 @@
 
                                     while($user_db = $result->fetch_assoc())
                                     {
-                                        // Laden der Ausbildungsdaten aus der Datenbank
+                                        // Laden der Produktdaten aus der Datenbank
                                         $p_id =  $user_db["P_ID"];
                                         $produktbezeichnung =  $user_db["Produktbez"];
                                         $anzahl =  $user_db["Anzahl"];
