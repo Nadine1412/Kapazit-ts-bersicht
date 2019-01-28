@@ -18,7 +18,7 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-// Überpruefen ob das Mitglied bereits vorhanden ist
+// Überpruefen ob der Mitarbeiter bereits vorhanden ist
  $query1 = "SELECT EMail FROM mitarbeiter_tbl
             WHERE EMail LIKE '$email'"; 
                 //    OR mid LIKE '$maid' AND vorname LIKE '$vorname' AND name LIKE '$nachname'"; 
@@ -31,13 +31,13 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
 // if($checkEmail){
 
  if ($result) {
-     # Mitglied bereits vorhanden
-   // @ToDo Ausgabe, dass Mitglied bereits vorhanden ist.
+     # Mitarbeiter bereits vorhanden
+   // @ToDo Ausgabe, dass Mitarbeiter bereits vorhanden ist.
     echo "Email bereits vorhanden";
     exit();
 } else {
 
-     # Mitglied hinzufügen
+     # Mitarbeiter hinzufügen
     $query3="INSERT INTO mitarbeiter_tbl
              SET 
              Nachname='$nachname',
@@ -52,7 +52,7 @@ $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error()
     {
 
          # weiterleitung auf die seite nach erfolgreichem login
-        #header('location: Anmeldung Bergwacht.html');
+        #header('location: Anmeldung kaue.html');
         header('location: anmeldung kaue.html');
         exit(1);
     }
