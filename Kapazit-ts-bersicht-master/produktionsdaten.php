@@ -186,7 +186,7 @@
 
                                     while($auftrag_db = $result->fetch_assoc())
                                     {
-                                        // Laden der Userdaten aus der Datenbank
+                                        // Laden der Planungsdaten aus der Datenbank
                                         $a_id =  $auftrag_db["A_ID"];
                                         $planungsdatum =  $auftrag_db["Planungsdatum"];
                                         $w_id =  $auftrag_db["W_ID"];
