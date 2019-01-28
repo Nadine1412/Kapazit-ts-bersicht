@@ -11,7 +11,7 @@ define("DB_DATABASE", "kapauebersicht_db");
 
 $db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE)or die(mysql_error());
 
-// Ausbildung hinzufügen
+// Produkt hinzufügen
  $query1 = "INSERT INTO produkt_tbl
             SET 
             Produktbez = '$bezeichnung',
