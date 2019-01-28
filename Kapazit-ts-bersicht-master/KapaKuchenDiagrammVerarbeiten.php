@@ -24,7 +24,7 @@
 
         while($user_db = $result->fetch_assoc())
         {
-            // Laden der Werk aus der Datenbank
+            // Laden der Werke aus der Datenbank
             $_SESSION["w_id"] =  $user_db["W_ID"];
             $kapafix =  $user_db["Kapazitaet_fix"];
             $_SESSION["kapazitaet"] =  $user_db["Kapazitaet_aktuell"]; 
@@ -33,7 +33,7 @@
                 
     if($result)
     {
-            # Weiterleitung auf die Mitglied löschen Seite;
+            # Weiterleitung auf die KapaKuchendiagramm Seite;
         header('location: KapaKuchendiagramm.php');
         exit(1);
     
